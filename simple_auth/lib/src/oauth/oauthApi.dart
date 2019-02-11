@@ -1,8 +1,8 @@
 import "dart:async";
-
-import "package:simple_auth/simple_auth.dart";
-import "package:http/http.dart" as http;
 import "dart:convert" as convert;
+
+import "package:http/http.dart" as http;
+import "package:simple_auth/simple_auth.dart";
 
 typedef void ShowAuthenticator(WebAuthenticator authenticator);
 
@@ -101,7 +101,7 @@ class OAuthApi extends AuthenticatedApi {
   Future<Request> authenticateRequest(Request request) async {
     Map<String, String> map = new Map.from(request.headers);
     map["Authorization"] =
-        "${currentOauthAccount.tokenType} ${currentOauthAccount.token}";
+        "${currentOauthAccount.tokenType} ${currentOauthAccount.idToken}";
     return request.replace(headers: map);
   }
 
