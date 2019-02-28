@@ -28,4 +28,7 @@ dev_dependencies:
 
 dev_dependency_overrides:
   simple_auth:
-    path: ../simple_auth
+    git:
+      url: git://github.com/jeffosmith/simple_auth.git
+      path: simple_auth
+      ref: custom_token
