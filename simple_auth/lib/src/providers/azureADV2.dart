@@ -36,6 +36,12 @@ class AzureADV2Api extends OAuthApi {
       useClientSecret,
       scopes);
 
+
+  @override
+  Future<Request> interceptRequest(Request request) {
+    return super.interceptRequest(applyHeaders(request, defaultHeaders));
+  }
+
   @override
   Future<Map<String, String>> getRefreshTokenPostData(Account account) async {
     var map = await super.getRefreshTokenPostData(account);
