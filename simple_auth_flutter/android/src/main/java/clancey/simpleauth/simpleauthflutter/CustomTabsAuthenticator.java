@@ -1,11 +1,10 @@
 package clancey.simpleauth.simpleauthflutter;
 
-import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.customtabs.CustomTabsIntent;
+import androidx.browser.customtabs.CustomTabsIntent;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -59,7 +58,9 @@ public class CustomTabsAuthenticator {
         if(intent == null || intent.getData() == null)
             return;
         Uri uri = intent.getData();
-        String scheme = uri.getScheme().toLowerCase();
+        String scheme = uri.getScheme();
+        if(scheme != null)
+            scheme = scheme.toLowerCase();
         if(!Authenticators.containsKey(scheme))
             return;
         WebAuthenticator authenticator = Authenticators.get(scheme);
