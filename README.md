@@ -70,6 +70,7 @@ you would then add the following to your Android manifest
 
 ## iOS
 on iOS you need the following in your app delegate.
+### Objective C
 
 ```objective-c
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
@@ -77,6 +78,12 @@ on iOS you need the following in your app delegate.
 }
 
 ```
+### Swift
+```swift
+override func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey: Any] = [:]) -> Bool {
+    return SimpleAuthFlutterPlugin.check(url)
+}
+ ```
 
 For iOS 11 and higher, you don't need to do anything else. On older iOS versions the following is required in the info.plist
 
