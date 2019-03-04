@@ -2,7 +2,6 @@ import 'dart:async';
 
 import "package:http/http.dart" as http;
 import 'package:simple_auth/simple_auth.dart';
-import 'package:simple_auth/src/utils.dart';
 
 class AzureADV2Api extends OAuthApi {
   bool useClientSecret;
@@ -38,7 +37,7 @@ class AzureADV2Api extends OAuthApi {
 
   @override
   Future<Request> interceptRequest(Request request) {
-    return super.interceptRequest(applyHeaders(request, defaultHeaders));
+    return super.interceptRequest(request.replace(headers: defaultHeaders));
   }
 
   @override
