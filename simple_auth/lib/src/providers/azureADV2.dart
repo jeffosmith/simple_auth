@@ -101,8 +101,9 @@ class AzureADV2Authenticator extends OAuthAuthenticator {
   Future<Map<String, dynamic>> getInitialUrlQueryParameters() async {
     this.nonce = generateNonce(8);
     var map = await super.getInitialUrlQueryParameters();
-    map['response_type'] = "id_token code";
-    map["display"] = "touch";
+    map['response_type'] = "code";
+    map['response_mode'] = "fragment";
+    map['display'] = "touch";
 
     if (!useClientSecret && map.containsKey("client_secret")) {
       map.remove("client_secret");
