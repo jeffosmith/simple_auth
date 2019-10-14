@@ -124,7 +124,7 @@ class OAuthApi extends AuthenticatedApi {
         refreshToken: result.refreshToken,
         scope: authenticator.scope,
         tokenType: result.tokenType,
-        token: result.accessToken);
+        token: result.idToken);
     return account;
   }
 
